@@ -21,38 +21,14 @@
                     </button>
                 </div>
                 <div class="modal-body mx-3">
-                    <form method="POST" action="/">
-                        {{ form.csrf_token }} {{ form.firstName.label}} {{ form.firstName(size=20) }}
+                    <form method="POST" action="">
+                        {{ form.csrf_token }}
+                        <hr> {{ form.firstName.label}} {{ form.firstName(size=20) }}
                         <hr> {{ form.lastName.label}} {{ form.lastName(size=20) }}
                         <hr> {{ form.emailAddress.label}} {{ form.emailAddress(size=20) }}
                         <hr> {{ form.password.label}} {{ form.password(size=20) }}
-                        <hr>
-                        <input type="submit" value="Sign Up">
+                        <hr> {{ form.travelerSubmit }}
                     </form>
-                    <!--<div class="md-form mb-5">
-                        <i class="fa fa-envelope prefix grey-text"></i>
-                        <input type="text" id="defaultForm-first-name" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="defaultForm-email">First Name</label>
-                    </div>
-                    <div class="md-form mb-5">
-                        <i class="fa fa-envelope prefix grey-text"></i>
-                        <input type="text" id="defaultForm-last-name" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="defaultForm-email">Last Name</label>
-                    </div>
-                    <div class="md-form mb-5">
-                        <i class="fa fa-envelope prefix grey-text"></i>
-                        <input type="email" id="defaultForm-email" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
-                    </div>
-
-                    <div class="md-form mb-4">
-                        <i class="fa fa-lock prefix grey-text"></i>
-                        <input type="password" id="defaultForm-pass" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
-                    </div>
-                    <div class="modal-footer d-flex justify-content-center">
-                        <button class="btn btn-deep-orange">Sign up</button>
-                    </div>-->
                 </div>
             </div>
 
@@ -69,13 +45,13 @@
                     </button>
                 </div>
                 <div class="modal-body mx-3">
-                    <form method="POST" action="/">
-                        {{ form.csrf_token }} {{ form.firstName.label}} {{ form.firstName(size=20) }}
+                    <form method="POST" action="">
+                        {{ form.csrf_token }} 
+                        <hr> {{ form.firstName.label}} {{ form.firstName(size=20) }}
                         <hr> {{ form.lastName.label}} {{ form.lastName(size=20) }}
                         <hr> {{ form.emailAddress.label}} {{ form.emailAddress(size=20) }}
                         <hr> {{ form.password.label}} {{ form.password(size=20) }}
-                        <hr>
-                        <input type="submit" value="Sign Up">
+                        <hr> {{ form.localSubmit }}
                     </form>
                 </div>
             </div>
@@ -83,7 +59,7 @@
     </div>
     <div class="container">
         <div class="header">
-            <h3 class="text-muted">Locale: An Itinerary Generator</h3>
+            <h3 class="text-muted">Itinerista: An Itinerary Generator</h3>
         </div>
 
         <div class="row signup">
