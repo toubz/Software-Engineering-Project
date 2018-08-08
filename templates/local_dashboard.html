@@ -1,6 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
     <div class="container">
-        <button>Whatsup</button>
+        <style>
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+            
+            li {
+                float: left;
+                display: block;
+                padding: 8px;
+                background-color: gray;
+            }
+            
+            li a {
+                display: block;
+                padding: 8px;
+                background-color: #dddddd;
+            }
+            .box-shadow-menu {
+                position: relative;
+                padding-left: 1.25em;
+            }
+            .box-shadow-menu:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0.25em;
+                width: 1em;
+                height: 0.15em;
+                background: black;
+                box-shadow: 
+                    0 0.25em 0 0 black,
+                    0 0.5em 0 0 black;
+            }
+            .border-menu {
+                position: relative;
+                padding-left: 1.25em;
+            }
+            .border-menu:before {
+                content: "";
+                position: absolute;
+                top: 0.25em;
+                left: 0;
+                width: 1em;
+                height: 0.125em;
+                border-top: 0.375em double #000;
+                border-bottom: 0.125em solid #000;
+            }
+        </style>
+        <ul>
+            <li>Home</li>
+            <li class="box-shadow-menu"></li>
+            <li class="border-menu"></li>
+          </ul>
     </div>
 </html>
