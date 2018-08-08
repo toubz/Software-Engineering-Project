@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-    <div class="container">
-        <button>Whatsup</button>
-    </div>
+
+<head>
+    <title>Itinerista: An Itinerary Generarator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+</head>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Itinerista</a>
+    <ul class="navbar-right">
+        <div class="dropdown" id="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="local_dashboard" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="local_dashboard">
+                <a class="dropdown-item" href="#">Home</a>
+                <a class="dropdown-item" href="#">Switch to Traveler Dashboard</a>
+                <a class="dropdown-item" href="#">View Created Itineraries</a>
+                <a class="dropdown-item" href="#">Sign Out</a>
+            </div>
+        </div>
+    </ul>
+</nav>
+
 </html>

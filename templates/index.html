@@ -46,7 +46,7 @@
                 </div>
                 <div class="modal-body mx-3">
                     <form method="POST" action="">
-                        {{ form.csrf_token }} 
+                        {{ form.csrf_token }}
                         <hr> {{ form.firstName.label}} {{ form.firstName(size=20) }}
                         <hr> {{ form.lastName.label}} {{ form.lastName(size=20) }}
                         <hr> {{ form.emailAddress.label}} {{ form.emailAddress(size=20) }}
