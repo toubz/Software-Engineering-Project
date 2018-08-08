@@ -1,8 +1,8 @@
 #! /usr/bin/python3.7
 from flask import Flask, render_template, request, redirect, url_for
-from .Itinerista.traveler import traveler
-from .Itinerista.local import local
-from .Itinerista.forms import SignUpForm
+from .itinerista.traveler import traveler
+from .itinerista.local import local
+from .itinerista.forms import SignUpForm
 
 app = Flask(__name__)
 app.register_blueprint(traveler)
