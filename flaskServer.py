@@ -1,4 +1,3 @@
-#! /usr/bin/python3.7
 from flask import Flask, render_template, request, redirect, url_for
 from .itinerista.traveler import traveler
 from .itinerista.local import local
