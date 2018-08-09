@@ -56,8 +56,7 @@ class CreateRequestForm(FlaskForm):
         'End Date',
         validators = [InputRequired()])
     location = StringField(
-        'Travel Location'
-    )
+        'Travel Location')
     total_budget = IntegerField(
         'Estimated Budget',
         validators = [InputRequired(), Length(max=10, message="Cannot be longer than 10 characters")],
@@ -116,8 +115,7 @@ class Activity(FlaskForm):
         'End Time',
         validators = [InputRequired()])
     activity_location = StringField(
-        'Location'
-    )
+        'Location')
     min_price = IntegerField(
         'Minimum Price',
         validators = [InputRequired(), Length(max=10, message="Cannot be longer than 10 characters")],

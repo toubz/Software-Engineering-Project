@@ -16,11 +16,27 @@ def submit():
         if (form.travelerSubmit.data):
             # This is where we will add to database
             # Lets wait for that to be setup
+            user = User(
+                form.first_name.data,
+                form.last_name.data,
+                form.email_address.data,
+                form.password.data)
 
+            db.session.add(user)
+            db.session.commit()
 
             return redirect(url_for('traveler.traveler_dashboard'))
         elif (form.localSubmit.data):
             # Here too
+            user = User(
+                form.first_name.data,
+                form.last_name.data,
+                form.email_address.data,
+                form.password.data)
+
+            db.session.add(user)
+            db.session.commit()
 
             return redirect(url_for('local.local_dashboard'))
+
     return render_template('index.html', form=form)
