@@ -13,14 +13,16 @@ app.config['WTF_CSRF_SECRET_KEY'] = "PWa~DxHcGZxI[SmI0UDa@3l1fYlxx"
 @app.route('/', methods=['GET', 'POST'])
 def submit():
     form = SignUpForm()
+    print("form load")
     if form.validate_on_submit():
-        if (form.travelerSubmit.data):
+        print("form validation")
+        if (form.traveler_submit.data):
             # This is where we will add to database
             # Lets wait for that to be setup
 
 
             return redirect(url_for('traveler.traveler_dashboard'))
-        elif (form.localSubmit.data):
+        elif (form.local_submit.data):
             # Here too
 
             return redirect(url_for('local.local_dashboard'))

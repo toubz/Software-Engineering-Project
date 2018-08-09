@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import DateField, HiddenField, IntegerField, StringField, PasswordField, SelectField, SubmitField
-from wtforms.validators import DataRequired, InputRequired, Length
+from wtforms.validators import DataRequired, InputRequired, Length, NumberRange
 
 
 # User signup
@@ -28,9 +28,9 @@ class SignUpForm(FlaskForm):
                    'maxlength': '50'})
     phone_number = IntegerField(
         'Phone Number',
-        validators = [InputRequired(), Length(max=20, message="Cannot be longer than 20 characters")],
+        validators = [InputRequired(), NumberRange(min=1000000000, max=9999999999)],
         render_kw={'placeholder': "What's your phone nunber?",
-                   'maxlength': '20'})
+                   'maxlength': '11'})
 
     traveler_submit = SubmitField()
     local_submit = SubmitField()
@@ -39,6 +39,7 @@ class SignUpForm(FlaskForm):
     def validate(self):
         result = super().validate()
 
+        return result
         # Add some other validators we'll need for users besides the ones I have
 
 
