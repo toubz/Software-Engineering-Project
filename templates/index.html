@@ -2,98 +2,107 @@
 <html lang="en">
 
 {% macro render_field(field) %}
-    <dt>{{ field.label }}
-    <dd>{{ field(**kwargs) | safe }}
-    {% if field.errors %}
-        {% for error in field.errors %}
-            <font color="red">
-                {{ error }}
-            </font>
-        {% endfor %}
-    {% endif %}
+<dt>{{ field.label }}
+    <dd>{{ field(**kwargs) | safe }} {% if field.errors %} {% for error in field.errors %}
+        <font color="red">
+            {{ error }}
+        </font>
+        {% endfor %} {% endif %}
     </dd>
-{% endmacro %}
+    {% endmacro %}
 
-<head>
-    <title>Itinerista: An Itinerary Generator</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-</head>
+    <head>
+        <title>Itinerista: An Itinerary Generator</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/homepage.css') }}">
+    </head>
 
-<body>
-    <!-- Traveler Signup Modal/Pop up -->
-    <div class="modal fade" id="travelerSignupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Traveler Sign Up</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Itinerista</a>
+
+            <ul class="navbar-right">
+                <div class="button"><a href="/signin/">Sign In</a></div>
+
+            </ul>
+        </div>
+    </nav>
+
+    <body>
+        <!-- Traveler Signup Modal/Pop up -->
+        <div class="modal fade" id="travelerSignupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Traveler Sign Up</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mx-3">
+                        <form method="POST" autocomplete="off" action="">
+                            {{ form.csrf_token }}
+                            <hr> {{ render_field(form.first_name) }}
+                            <hr> {{ render_field(form.last_name) }}
+                            <hr> {{ render_field(form.email_address) }}
+                            <hr> {{ render_field(form.phone_number) }}
+                            <hr> {{ render_field(form.password) }}
+                            <hr> {{ form.traveler_submit }}
+                        </form>
+                    </div>
                 </div>
-                <div class="modal-body mx-3">
-                    <form method="POST" autocomplete="off" action="">
-                        {{ form.csrf_token }}
-                        <hr> {{ render_field(form.first_name) }}
-                        <hr> {{ render_field(form.last_name) }}
-                        <hr> {{ render_field(form.email_address) }}
-                        <hr> {{ render_field(form.phone_number) }}
-                        <hr> {{ render_field(form.password) }}
-                        <hr> {{ form.traveler_submit }}
-                    </form>
+
+            </div>
+        </div>
+        <!-- Local Signup Modal/Pop up -->
+        <div class="modal fade" id="localSignupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Local Sign Up</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mx-3">
+                        <form method="POST" autocomplete="off">
+                            {{ form.csrf_token }}
+                            <hr> {{ render_field(form.first_name) }}
+                            <hr> {{ render_field(form.last_name) }}
+                            <hr> {{ render_field(form.email_address) }}
+                            <hr> {{ render_field(form.phone_number) }}
+                            <hr> {{ render_field(form.password) }}
+                            <hr> {{ form.local_submit }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header">
+                <h3 class="text-muted">Itinerista: An Itinerary Generator</h3>
+            </div>
+
+            <div class="row signup">
+                <!--Traveler Signup Button-->
+                <div class="col-lg-6">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#travelerSignupModal">For Travelers</button>
+                </div>
+
+                <!--Local Signup Button-->
+                <div class="col-lg-6">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#localSignupModal">For Locals</button>
                 </div>
             </div>
 
-        </div>
-    </div>
-    <!-- Local Signup Modal/Pop up -->
-    <div class="modal fade" id="localSignupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Local Sign Up</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body mx-3">
-                    <form method="POST" autocomplete="off">
-                        {{ form.csrf_token }} 
-                        <hr> {{ render_field(form.first_name) }}
-                        <hr> {{ render_field(form.last_name) }}
-                        <hr> {{ render_field(form.email_address) }}
-                        <hr> {{ render_field(form.phone_number) }}
-                        <hr> {{ render_field(form.password) }}
-                        <hr> {{ form.local_submit }}
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="header">
-            <h3 class="text-muted">Itinerista: An Itinerary Generator</h3>
-        </div>
+            <footer class="footer">
+                <p>&copy; Developed by Gordon Lo, Devin Touba, Imtiaz Hssan, and Dixon Jin</p>
+            </footer>
 
-        <div class="row signup">
-            <!--Traveler Signup Button-->
-            <div class="col-lg-6">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#travelerSignupModal">For Travelers</button>
-            </div>
-
-            <!--Local Signup Button-->
-            <div class="col-lg-6">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#localSignupModal">For Locals</button>
-            </div>
         </div>
-
-        <footer class="footer">
-            <p>&copy; Developed by Gordon Lo, Devin Touba, Imtiaz Hssan, and Dixon Jin</p>
-        </footer>
-
-    </div>
-</body>
+    </body>
 
 </html>

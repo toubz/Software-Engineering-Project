@@ -1,0 +1,11 @@
+body {
+    width: 1200px;
+    height:600px;
+    background-image:url("/static/img/homepage_bg.jpg");
+    background-size: cover; /* or contain depending on what you want */
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-align:center;
+    margin:auto;
+    padding:0;
+}
