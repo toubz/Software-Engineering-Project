@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
+{% macro render_field(field) %}
+    <dt>{{ field.label }}
+    <dd>{{ field(**kwargs) | safe }}
+    {% if field.errors %}
+        {% for error in field.errors %}
+            <font color="red">
+                {{ error }}
+            </font>
+        {% endfor %}
+    {% endif %}
+    </dd>
+{% endmacro %}
+
 <head>
     <title>Itinerista: An Itinerary Generarator</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -21,13 +34,13 @@
                     </button>
                 </div>
                 <div class="modal-body mx-3">
-                    <form method="POST" action="">
+                    <form method="POST" autocomplete="off">
                         {{ form.csrf_token }}
-                        <hr> {{ form.firstName.label}} {{ form.firstName(size=20) }}
-                        <hr> {{ form.lastName.label}} {{ form.lastName(size=20) }}
-                        <hr> {{ form.emailAddress.label}} {{ form.emailAddress(size=20) }}
-                        <hr> {{ form.password.label}} {{ form.password(size=20) }}
-                        <hr> {{ form.travelerSubmit }}
+                        <hr> {{ render_field(form.first_name) }}
+                        <hr> {{ render_field(form.last_name) }}
+                        <hr> {{ render_field(form.email_address) }}
+                        <hr> {{ render_field(form.password) }}
+                        <hr> {{ form.traveler_submit }}
                     </form>
                 </div>
             </div>
@@ -45,6 +58,7 @@
                     </button>
                 </div>
                 <div class="modal-body mx-3">
+<<<<<<< HEAD
                     <form method="POST" action="">
                         {{ form.csrf_token }}
                         <hr> {{ form.firstName.label}} {{ form.firstName(size=20) }}
@@ -52,6 +66,15 @@
                         <hr> {{ form.emailAddress.label}} {{ form.emailAddress(size=20) }}
                         <hr> {{ form.password.label}} {{ form.password(size=20) }}
                         <hr> {{ form.localSubmit }}
+=======
+                    <form method="POST" autocomplete="off">
+                        {{ form.csrf_token }} 
+                        <hr> {{ render_field(form.first_name) }}
+                        <hr> {{ render_field(form.last_name) }}
+                        <hr> {{ render_field(form.email_address) }}
+                        <hr> {{ render_field(form.password) }}
+                        <hr> {{ form.local_submit }}
+>>>>>>> b5c26b016bb03d68f0d647e91a5c974d9d832819
                     </form>
                 </div>
             </div>
